@@ -5,6 +5,7 @@
 
 import About from "../../component/Home/About";
 import Contact from "../../component/Home/Contact";
+import Education from "../../component/Home/Education";
 import Hero from "../../component/Home/Hero";
 import ProjectSection from "../../component/Home/ProjectSection";
 import SkillSection from "../../component/Home/SkillSection";
@@ -21,6 +22,9 @@ const HomePage = () => {
 
       <div className=" text-white " id="skills">
         <SkillSection></SkillSection>
+      </div>
+      <div className=" text-white " id="education">
+        <Education></Education>
       </div>
 
       <div className=" text-white text-center" id="projects">

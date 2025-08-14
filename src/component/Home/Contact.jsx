@@ -15,7 +15,7 @@ const contactInfo = [
     id: 1,
     title: "Email",
     value: "imranfaraji880@gmail.com",
-    
+    link: "mailto:imranfaraji880@gmail.com",
     icon: (
       <svg
         className="w-6 h-6 text-red-500"
@@ -27,7 +27,7 @@ const contactInfo = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M16 12l-4-4-4 4m8 0l-4 4-4-4"
+          d="M16 12H8m8 0l-4 4m4-4l-4-4"
         />
       </svg>
     ),
@@ -36,7 +36,7 @@ const contactInfo = [
     id: 2,
     title: "Phone",
     value: "+8801918513419",
-    
+    link: "tel:+8801918513419",
     icon: (
       <svg
         className="w-6 h-6 text-red-500"
@@ -48,7 +48,7 @@ const contactInfo = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M3 8l7.89 7.89a2 2 0 002.83 0L21 9"
+          d="M3 5h2l3.6 7.59a1 1 0 00.9.41h7.5a1 1 0 00.9-.55l3.38-6.76a1 1 0 00-.9-1.45H5.21"
         />
       </svg>
     ),
@@ -57,7 +57,7 @@ const contactInfo = [
     id: 3,
     title: "Location",
     value: "Bhola, Barisal",
-    
+    link: "https://maps.google.com/?q=Bhola,Barisal",
     icon: (
       <svg
         className="w-6 h-6 text-red-500"
@@ -69,12 +69,12 @@ const contactInfo = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2z"
+          d="M12 11a4 4 0 110-8 4 4 0 010 8z"
         />
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M12 21c-4 0-8-4-8-8 0-3 2-6 6-6 2 0 4 2 4 4s-1 4-2 5-2 1-2 1"
+          d="M12 21c-6-4.5-6-10 0-14"
         />
       </svg>
     ),
@@ -95,18 +95,22 @@ const Contact = () => {
     }));
   };
 
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Thanks! Your message has been sent.");
+  };
 
   return (
     <section
       id="contact"
       className="py-24 md:py-32 bg-[#1f2226] border-b border-gray-800"
     >
-      <div className="responsive max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-16">
         {/* Left: Contact Form */}
         <motion.form
-          
-          className="flex flex-col gap-6 bg-gray-900 p-8 rounded-xl shadow-lg"
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6 bg-gray-900 p-8 rounded-xl shadow-lg shadow-red-500/10"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -146,7 +150,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="bg-red-500 text-white font-semibold py-3 rounded-full hover:bg-red-600 transition"
+            className="bg-red-500 text-white font-semibold py-3 rounded-full hover:bg-red-600 shadow-md shadow-red-500/20 transition"
           >
             Send Message
           </button>
@@ -162,10 +166,10 @@ const Contact = () => {
         >
           <h2 className="text-4xl font-bold text-white mb-6">Get In Touch</h2>
 
-          {contactInfo.map(({ id,  value,  icon }) => (
+          {contactInfo.map(({ id, value, link, icon }) => (
             <a
               key={id}
-              
+              href={link}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 text-gray-300 hover:text-red-500 transition-colors duration-300"

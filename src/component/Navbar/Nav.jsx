@@ -9,8 +9,10 @@ const Nav = () => {
     { id: "hero", text: "Home" },
     { id: "about", text: "About" },
     { id: "skills", text: "Skills" },
+    { id: "education", text: "Education" },
     { id: "projects", text: "Projects" },
     { id: "contact", text: "Contact" },
+    
   ];
 
   return (
